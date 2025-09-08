@@ -1,0 +1,79 @@
+site_name: 1141 關稅法專題研究
+docs_dir: My_Notes
+site_url: "https://mt019.github.io/1141_Tariff/"
+site_description: "國立台灣大學 關稅法專題研究的課程筆記"
+site_author: "NTU 1141 Tariff Course 陳衍任老師"
+
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.tracking
+    - navigation.footer  
+    - navigation.instant: false      # 產生頁腳的上一頁/下一頁
+  font:
+    text: Noto Serif CJK TC
+    code: JetBrains Mono
+plugins:
+  - search
+  - awesome-pages
+  - mkdocs-jupyter:
+      execute: false  # 建站時不執行 notebook，只轉換
+  - exclude:
+      glob: ['_*/**', '*_.md', '**/*稿*.*']
+  - rss:
+      match_path: '^(?!My_Notes/notebooks/).*'   # 不含 notebooks
+      # match_path: ".*"          # 全站產生 RSS
+      date_from_meta:
+        as_creation: date           # front matter: date
+        as_update: updated          # 若沒有 updated，可用 "git"
+        datetime_format: "%Y-%m-%d"
+        default_timezone: "Asia/Taipei"
+      use_git: true
+      abstract_chars_count: 200
+
+markdown_extensions:
+  # 支援提示框
+  - admonition
+  - pymdownx.details
+  # 支援 YAML Front Matter（SEO：title/description/date 等）
+  - meta
+
+  # 支援 Mermaid
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  # 嚴格列表縮排（子項必須 2 空白）
+  - mdx_truly_sane_lists:
+      nested_indent: 2
+
+  # 支援數學公式
+  - pymdownx.arithmatex:
+      generic: true
+
+
+extra_css:
+  - assets/extra.css   # 若有
+
+extra_javascript:
+  # 自訂腳本
+  - assets/keynav.js           # 鍵盤導航
+  - assets/extra.js
+
+  # MathJax
+  - assets/mathjax-config.js   # 配置（需在主程式前）
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+  # Mermaid（若使用 mermaid2 plugin 則可省略以下兩行）
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - assets/mermaid-init.js
+
+  - assets/judgment-redirect.html
+  - assets/fjud-oneclick.js
