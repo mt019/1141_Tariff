@@ -12,7 +12,8 @@
       {% set page_kw = page.meta.keywords %}
     {% endif %}
   {% endif %}
-  {% set all_kw = (global_kw + page_kw) | unique %}
+  {# Jinja's `unique` can yield a generator; convert to list for length/join #}
+  {% set all_kw = ((global_kw + page_kw) | unique | list) %}
   {% if all_kw and all_kw | length > 0 %}
     <meta name="keywords" content="{{ all_kw | join(', ') }}">
   {% endif %}
@@ -32,4 +33,3 @@
   <meta name="twitter:title" content="{{ (page and page.title) or config.site_name }}">
   <meta name="twitter:description" content="{{ (page and page.meta and page.meta.description) or (page and page.description) or config.site_description }}">
 {% endblock %}
-
