@@ -8,6 +8,7 @@ site_author: "NTU 1141 Tariff Course 陳衍任老師"
 theme:
   name: material
   language: zh
+  custom_dir: overrides
   features:
     - navigation.sections
     - navigation.expand
@@ -34,6 +35,26 @@ plugins:
         default_timezone: "Asia/Taipei"
       use_git: true
       abstract_chars_count: 200
+
+extra:
+  # 全站預設關鍵字（可在每頁 front matter 以 keywords 補充或覆蓋）
+  keywords:
+    - 關稅
+    - 關稅法
+    - 海關
+    - 關務
+    - 稅則
+    - 通關
+    - 關稅與貿易總協定
+    - WTO
+    - 稅捐稽徵法
+    - 關稅課徵
+    - 關稅爭議
+    - Tariff
+    - Customs Law
+    - Customs
+    - NTU
+    - Taiwan
 
 markdown_extensions:
   # 支援提示框

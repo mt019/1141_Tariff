@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  {# 站點與頁面關鍵字合併（前者來自 mkdocs.yml: extra.keywords；後者來自頁面 front matter: keywords） #}
+  {% set global_kw = config.extra.keywords or [] %}
+  {% set page_kw = [] %}
+  {% if page and page.meta and page.meta.keywords %}
+    {% if page.meta.keywords is string %}
+      {% set page_kw = [page.meta.keywords] %}
+    {% else %}
+      {% set page_kw = page.meta.keywords %}
+    {% endif %}
+  {% endif %}
+  {% set all_kw = (global_kw + page_kw) | unique %}
+  {% if all_kw and all_kw | length > 0 %}
+    <meta name="keywords" content="{{ all_kw | join(', ') }}">
+  {% endif %}
+
+  {# 其他常見 SEO 標籤（使用現有站點/頁面資料） #}
+  <meta name="author" content="{{ config.site_author }}">
+  <meta name="description" content="{{ (page and page.meta and page.meta.description) or (page and page.description) or config.site_description }}">
+
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ (page and page.title) or config.site_name }}">
+  <meta property="og:description" content="{{ (page and page.meta and page.meta.description) or (page and page.description) or config.site_description }}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ (page and page.canonical_url) or config.site_url }}">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ (page and page.title) or config.site_name }}">
+  <meta name="twitter:description" content="{{ (page and page.meta and page.meta.description) or (page and page.description) or config.site_description }}">
+{% endblock %}
+

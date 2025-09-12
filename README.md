@@ -101,7 +101,7 @@ Tip (Docker users): mount the whole repo for notebooks to see all files:
 ├─ fix_cn_ordinals.py           # CLI: convert 第…條/項 to Arabic across files
 ├─ fix_cn_ordinals_all.sh       # Wrapper to run the fixer over notes
 ├─ notebooks/
-│  ├─ 筆記一鍵修正_條項數字與清單空行.ipynb  # One‑click notebook fixer
+│  ├─ md-fix.ipynb  # One‑click notebook fixer
 │  └─ (others…)                 # Your working notebooks
 ├─ mkdocs/
 │  ├─ mkdocs.yml                # MkDocs config (Material theme, SEO, RSS)

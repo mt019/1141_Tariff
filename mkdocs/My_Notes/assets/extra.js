@@ -80,3 +80,56 @@
   // Material 的即時導航事件（若啟用 navigation.instant 時更穩）
   document.addEventListener("navigation", schedule);
 })();
+
+// 在頂部導覽加入「一鍵學術連結」
+(function () {
+  const links = [
+    { label: "關稅法", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0350001", emoji: "" },
+    { label: "關稅法施行細則", url: "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0350002", emoji: "📚" },
+    { label: "裁判書查詢", url: "https://judgment.judicial.gov.tw/FJUD/default.aspx", emoji: "⚖️" }
+  ];
+
+  function addQuickLinks() {
+    const headerInner = document.querySelector('.md-header .md-header__inner');
+    if (!headerInner) return;
+    if (headerInner.querySelector('.qa-links')) return; // 已加入
+
+    const wrap = document.createElement('div');
+    wrap.className = 'qa-links';
+
+    links.forEach(l => {
+      const a = document.createElement('a');
+      a.href = l.url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      const em = document.createElement('span');
+      em.className = 'qa-emoji';
+      em.textContent = l.emoji || '🔗';
+      const txt = document.createElement('span');
+      txt.textContent = l.label;
+      a.appendChild(em);
+      a.appendChild(txt);
+      wrap.appendChild(a);
+    });
+
+    // 嘗試找搜尋框，將連結放在其「前面」
+    const searchEl =
+      headerInner.querySelector('[data-md-component="search"]') ||
+      headerInner.querySelector('.md-search') ||
+      null;
+
+    if (searchEl && searchEl.parentNode === headerInner) {
+      headerInner.insertBefore(wrap, searchEl);
+    } else if (searchEl) {
+      // 若 search 不在 headerInner 之下，則插入到其祖先前
+      headerInner.insertBefore(wrap, headerInner.firstChild);
+    } else {
+      // 後備：找不到 search 時，仍加到右側
+      headerInner.appendChild(wrap);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', addQuickLinks);
+  // MkDocs Material SPA 導航事件
+  document.addEventListener('navigation', addQuickLinks);
+})();

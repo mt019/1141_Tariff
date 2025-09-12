@@ -33,4 +33,32 @@
   font-weight: 700 !important; /* 700 = 粗體 */
 }
 
+/* 一鍵學術連結（放在「搜尋框前面」） */
+.qa-links {  
+  display: flex;
+  gap: 10px;              /* 連結之間的間距 */
+  align-items: center;
+  margin-right: 12px;     /* 與搜尋框的距離 */
+}
+.qa-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  line-height: 1;
+  background: var(--md-default-bg-color, #fff);
+  color: var(--md-typeset-color, #222);
+  border: 1px solid rgba(0,0,0,0.1);
+}
+.qa-links a:hover { filter: brightness(0.95); }
+.qa-links .qa-emoji {
+  font-size: 1rem;
+}
 
+/* 窄螢幕時可視需要隱藏（保留空間給搜尋） */
+@media (max-width: 700px) {
+  .qa-links { display: none; }
+}
