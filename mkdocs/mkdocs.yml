@@ -14,7 +14,6 @@ theme:
     - navigation.expand
     - navigation.tracking
     - navigation.footer  
-    - navigation.instant: false      # 產生頁腳的上一頁/下一頁
   font:
     text: Noto Serif CJK TC
     code: JetBrains Mono
@@ -35,6 +34,11 @@ plugins:
         default_timezone: "Asia/Taipei"
       use_git: true
       abstract_chars_count: 200
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: true
+  - minify:
+      minify_html: true
 
 extra:
   # 全站預設關鍵字（可在每頁 front matter 以 keywords 補充或覆蓋）
@@ -60,6 +64,8 @@ extra:
     - NTU 1141 Tariff Course
     - 台大
     - 國立台灣大學
+  # robots 預設（可由頁面 front matter: robots 覆蓋）
+  robots_default: index,follow
 
 markdown_extensions:
   # 支援提示框
@@ -100,6 +106,3 @@ extra_javascript:
   # Mermaid（若使用 mermaid2 plugin 則可省略以下兩行）
   - https://unpkg.com/mermaid@10/dist/mermaid.min.js
   - assets/mermaid-init.js
-
-  - assets/judgment-redirect.html
-  - assets/fjud-oneclick.js
