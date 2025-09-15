@@ -8,6 +8,11 @@
   {% set site_url = config.site_url or '' %}
   {% if site_url and not site_url.endswith('/') %}{% set site_url = site_url ~ '/' %}{% endif %}
   <link rel="alternate" type="application/rss+xml" title="{{ config.site_name }} RSS" href="{{ site_url ~ 'rss.xml' }}">
+
+  {# Google Search Console 驗證 #}
+  {% if config.extra and config.extra.google_site_verification %}
+    <meta name="google-site-verification" content="HgMTZnEFg_uS3jjPeDSxhbNBA6tsFU6jG7IkWxEW6P4" />
+  {% endif %}
   {# 站點與頁面關鍵字合併（前者來自 mkdocs.yml: extra.keywords；後者來自頁面 front matter: keywords） #}
   {% set global_kw = config.extra.keywords or [] %}
   {% set page_kw = [] %}

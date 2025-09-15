@@ -66,6 +66,8 @@ extra:
     - 國立台灣大學
   # robots 預設（可由頁面 front matter: robots 覆蓋）
   robots_default: index,follow
+  # Google Search Console：填入 HTML 標籤的 content 值
+  google_site_verification: "HgMTZnEFg_uS3jjPeDSxhbNBA6tsFU6jG7IkWxEW6P4"
 
 markdown_extensions:
   # 支援提示框
