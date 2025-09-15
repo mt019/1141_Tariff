@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# 指向 sitemap 以利搜尋引擎抓取
+Sitemap: https://mt019.github.io/1141_Tariff/sitemap.xml
+

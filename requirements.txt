@@ -1,5 +1,5 @@
 # MkDocs and plugins used to build the site
-mkdocs>=1.5.3
+mkdocs>=1.6.1,<2
 mkdocs-material
 mkdocs-jupyter
 mkdocs-awesome-pages-plugin
@@ -8,4 +8,3 @@ mkdocs-minify-plugin
 mkdocs-git-revision-date-localized-plugin
 mkdocs-rss-plugin
 mdx_truly_sane_lists
-

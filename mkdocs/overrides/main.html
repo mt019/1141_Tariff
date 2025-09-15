@@ -2,6 +2,8 @@
 
 {% block extrahead %}
   {{ super() }}
+  {# Canonical URL，避免重複內容造成權重分散 #}
+  <link rel="canonical" href="{{ (page and page.canonical_url) or config.site_url }}">
   {# 站點與頁面關鍵字合併（前者來自 mkdocs.yml: extra.keywords；後者來自頁面 front matter: keywords） #}
   {% set global_kw = config.extra.keywords or [] %}
   {% set page_kw = [] %}

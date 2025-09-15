@@ -39,6 +39,7 @@ plugins:
 extra:
   # 全站預設關鍵字（可在每頁 front matter 以 keywords 補充或覆蓋）
   keywords:
+    - 關稅法專題研究
     - 關稅
     - 關稅法
     - 海關
@@ -55,6 +56,10 @@ extra:
     - Customs
     - NTU
     - Taiwan
+    - 陳衍任
+    - NTU 1141 Tariff Course
+    - 台大
+    - 國立台灣大學
 
 markdown_extensions:
   # 支援提示框
